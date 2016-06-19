@@ -1,0 +1,14 @@
+# You can use a Docker image from Docker Hub or your own container
+# registry for your build environment.
+image: desertbit/golang-gb
+
+pipelines:
+  default:
+    - step:
+        script:
+          - go get golang.org/x/net/context
+          - go get golang.org/x/oauth2
+          - go get golang.org/x/oauth2/google
+          - go get google.golang.org/api/calendar/v3        
+          - go get github.com/Sirupsen/logrus
+          - go build -v
