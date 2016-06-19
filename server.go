@@ -22,7 +22,6 @@ import (
 )
 
 const (
-	forecastAPIURI = "https://api.forecast.io/forecast"
   longDateForm = "Jan 2, 2006 at 3:04pm (MST)"
   shortDateForm = "2006-01-02"
 )
@@ -30,7 +29,6 @@ const (
 var (
 	clientSecret string
 	port     string
-
 )
 
 
