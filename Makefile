@@ -1,5 +1,5 @@
 
-CONTAINER=loxcalendar
+CONTAINER=r.nitram.at/loxcalendar
 TODAY=`date +'%Y%m%d'`
 
 container: golang
