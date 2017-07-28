@@ -5,8 +5,5 @@ pipelines:
   default:
     - step:
         script:
-        - apk --no-cache add git make docker
-        - make 
-          
-options:
-  docker: true        
+        - apk --no-cache add git make 
+        - make golang
