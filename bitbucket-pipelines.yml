@@ -1,13 +1,9 @@
 
-image: desertbit/golang-gb
+image: golang:1.8-alpine
 
 pipelines:
   default:
     - step:
         script:
-          - go get golang.org/x/net/context
-          - go get golang.org/x/oauth2
-          - go get golang.org/x/oauth2/google
-          - go get google.golang.org/api/calendar/v3        
-          - go get github.com/Sirupsen/logrus
-          - go build -v
+        - apk --no-cache add git make
+        - make golang
