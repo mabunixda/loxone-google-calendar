@@ -1,13 +1,14 @@
-FROM alpine:latest 
+FROM golang:1.8-alpine3.6 as builder
+COPY * /go/src/
+WORKDIR /go/src/
+RUN apk --no-cache add make git \
+    && make golang
+
+FROM alpine:3.6
 MAINTAINER Martin Buchleitner "martin@nitram.at"
-
-RUN apk --no-cache add ca-certificates
-
-WORKDIR  /opt
-COPY loxonegogooglecalendar /opt/loxonegogooglecalendar
-RUN chmod 755 /opt/loxonegogooglecalendar 
-RUN mkdir /opt/.credentials
+RUN apk --no-cache add ca-certificates && mkdir /.credentials
+COPY --from=builder /go/src/loxonegogooglecalendar /loxonegogooglecalendar
+WORKDIR  /
 EXPOSE 8080
-
-ENTRYPOINT  ["/opt/loxonegogooglecalendar"]
+ENTRYPOINT  ["/loxonegogooglecalendar"]
 
