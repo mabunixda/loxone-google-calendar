@@ -4,7 +4,7 @@ WORKDIR /go/src/
 RUN apk --no-cache add make git \
     && make golang
 
-FROM alpine:latest
+FROM alpine:3.18.3
 LABEL "Maintainer" "Martin Buchleitner <martin@nitram.at>"
 RUN apk --no-cache add ca-certificates && mkdir /.credentials
 COPY --from=builder /go/src/loxonegogooglecalendar /loxonegogooglecalendar
